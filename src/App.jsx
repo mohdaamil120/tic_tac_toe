@@ -17,7 +17,6 @@ function App() {
       (arr[0] == "O" && arr[4] == "O" && arr[8] == "O") || 
       (arr[2] == "O" && arr[4] == "O" && arr[6] == "O")){
         setwin("O")
-        // alert("O is winner")
         setOwin(prev => prev+1)
       }
       else if((arr[0] == "X" && arr[1] == "X" && arr[2] == "X" ) ||
@@ -26,11 +25,9 @@ function App() {
        (arr[0] == "X" && arr[4] == "X" && arr[8] == "X") || 
        (arr[2] == "X" && arr[4] == "X" && arr[6] == "X")){
         setwin("X")
-        // alert("O is winner")
         setXwin(prev => prev+1)
       }
       else if (!arr.includes("")) {
-        // Check for tie if the board is full
         setwin("Tie");
       }
     }
@@ -68,7 +65,7 @@ function App() {
         <div className='game_board'>
           {
             arr.length && arr.map((el,i)=>{
-              return <button  disabled={win} onClick={() => handleTurn(i)} className="box">
+              return <button key={i} disabled={win} onClick={() => handleTurn(i)} className="box">
                 {el}
               </button>
             })
